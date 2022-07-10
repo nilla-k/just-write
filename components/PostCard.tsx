@@ -1,8 +1,12 @@
 import React from 'react'
+import Post from '../pages'
 
-const PostCard = () => {
+const PostCard = ({ post }: {post: any})  => {
   return (
-    <div>PostCard</div> 
+    <div>
+        {post.title}
+        {post.excerpt}
+    </div> 
   )
 }
 
