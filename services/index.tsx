@@ -35,6 +35,10 @@ export const getPosts = async () => {
     throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
   } else {
     const result = await request(graphqlAPI, query);
-    return result.postConnection.edges;
+    return result.postsConnection.edges;
   }
 };
+
+/**
+ * Initially, when first trying the request, you'll get a 403 Error: not allowed. This is because you need to set up public API permisions in Hygraph/GraphCMS
+ */

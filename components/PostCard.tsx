@@ -1,13 +1,17 @@
-import React from 'react'
-import Post from '../pages'
+import React from 'react';
 
-const PostCard = ({ post }: {post: any})  => {
+export type Post = {
+  title: string;
+  excerpt: string;
+};
+
+const PostCard = ({ post }: { post: Post }) => {
   return (
     <div>
-        {post.title}
-        {post.excerpt}
-    </div> 
-  )
-}
+      {post.title}
+      {post.excerpt}
+    </div>
+  );
+};
 
-export default PostCard
+export default PostCard;
