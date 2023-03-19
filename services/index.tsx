@@ -40,5 +40,6 @@ export const getPosts = async () => {
 };
 
 /**
- * Initially, when first trying the request, you'll get a 403 Error: not allowed. This is because you need to set up public API permisions in Hygraph/GraphCMS
+ * Initially, when first trying the request, you'll get a 403 Error: not allowed.
+ * This is because you need to set up public API permisions in Hygraph/GraphCMS
  */
