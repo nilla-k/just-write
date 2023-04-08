@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import Link from 'next/link';
-import { Post, Categories } from './PostCard';
+import { Post, Category } from './PostCard';
 import { getRecentPosts, getSimilarPosts } from '../services';
+import CategoryBadge from './CategoryBadge';
 
-const PostWidget = ({ categories, slug }: { categories: Categories; slug: string }) => {
+const PostWidget = ({ categories, slug }: { categories: Category; slug: string }) => {
   const [suggestedPosts, setSuggestedPosts] = useState([]);
 
   useEffect(() => {
@@ -25,17 +26,20 @@ const PostWidget = ({ categories, slug }: { categories: Categories; slug: string
               <div className="w-16 flex-none">
                 <img
                   alt={post.title}
-                  height="60px"
-                  width="60px"
-                  className="align-middle rounded-sm object-fill"
+                  className="align-middle rounded-sm object-fill w-16 h-16"
                   src={post.headerImage.url}
                 />
               </div>
               <div className="flex-grow ml-4">
-                <p className="font-serif">{post.title}</p>
-                <p className="font-serif text-gray-500 text-xs">
+                <p className="font-serif font-semibold">{post.title}</p>
+                <p className="font-serif text-gray-500 text-xs pb-2">
                   {moment(post.createdAt).format('DD MMM, YYYY')}
                 </p>
+                <div className="flex gap-1 flex-wrap">
+                  {post.categories.map((category: Category) => (
+                    <CategoryBadge category={category.name} />
+                  ))}
+                </div>
               </div>
             </div>
           </Link>

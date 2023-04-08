@@ -49,6 +49,10 @@ export const getRecentPosts = async () => {
       posts(orderBy: createdAt_DESC, first: 3) {
         createdAt
         title
+        categories {
+          slug
+          name
+        }
         slug
         headerImage {
           url
@@ -60,6 +64,7 @@ export const getRecentPosts = async () => {
     throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
   } else {
     const result = await request(graphqlAPI, query);
+    console.log(result.posts);
     return result.posts;
   }
 };
@@ -76,7 +81,10 @@ export const getSimilarPosts = async ({
       posts(where: { categories_some: { name_in: $categories }, slug_not: $slug }, last: 3) {
         slug
         title
-        categories
+        categories {
+          slug
+          name
+        }
         createdAt
         headerImage {
           url

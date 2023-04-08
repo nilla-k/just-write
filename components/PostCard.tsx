@@ -10,7 +10,7 @@ export type Post = {
   title: string;
   excerpt: string;
   headerImage: HeaderImage;
-  categories: Categories;
+  categories: [Category];
 };
 
 export type Author = {
@@ -22,7 +22,7 @@ export type HeaderImage = {
   url: string;
 };
 
-export type Categories = {
+export type Category = {
   name: string;
   slug: string;
 };
