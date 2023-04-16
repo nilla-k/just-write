@@ -100,3 +100,21 @@ export const getSimilarPosts = async ({
     return result.posts;
   }
 };
+
+export const getCategories = async () => {
+  const query = gql`
+    query getCategories {
+      categories {
+        name
+        slug
+      }
+    }
+  `;
+
+  if (graphqlAPI === undefined) {
+    throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
+  } else {
+    const result = await request(graphqlAPI, query);
+    return result.categories;
+  }
+};
