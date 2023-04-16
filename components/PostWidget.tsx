@@ -18,7 +18,7 @@ const PostWidget = ({ categories, slug }: { categories: Category; slug: string }
 
   return (
     <div className="bg-white rounded-sm shadow-sm p-8 mb-8">
-      <h3 className="font-semibold font-serif pb-3">{slug ? 'Related posts' : 'Recent posts'}</h3>
+      <h3 className="font-semibold  pb-3">{slug ? 'Related posts' : 'Recent posts'}</h3>
       <div>
         {suggestedPosts.map((post: Post) => (
           <Link href={`/post/${post.slug}`}>
@@ -31,8 +31,8 @@ const PostWidget = ({ categories, slug }: { categories: Category; slug: string }
                 />
               </div>
               <div className="flex-grow ml-4">
-                <p className="font-serif text-sm font-semibold">{post.title}</p>
-                <p className="font-serif text-gray-500 text-xs pb-2">
+                <p className="text-sm font-semibold">{post.title}</p>
+                <p className="text-gray-500 text-xs pb-2">
                   {moment(post.createdAt).format('DD MMM, YYYY')}
                 </p>
                 <div className="flex gap-1 flex-wrap">
