@@ -15,11 +15,11 @@ const Categories = () => {
       <h3 className="font-semibold pb-3">Categories</h3>
       <div className="grid grid-cols-1 divide-y">
         {categories.map((category: Category) => (
-          <Link href={`/${category.slug}`}>
-            <div>
-              <p className="text-sm p-2">{category.name}</p>
-            </div>
-          </Link>
+          <div>
+            <p className="text-sm p-2">
+              <Link href={`/${category.slug}`}>{category.name}</Link>
+            </p>
+          </div>
         ))}
       </div>
     </div>
