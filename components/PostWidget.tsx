@@ -31,7 +31,7 @@ const PostWidget = ({ categories, slug }: { categories: Category; slug: string }
                 />
               </div>
               <div className="flex-grow ml-4">
-                <p className="font-serif font-semibold">{post.title}</p>
+                <p className="font-serif text-sm font-semibold">{post.title}</p>
                 <p className="font-serif text-gray-500 text-xs pb-2">
                   {moment(post.createdAt).format('DD MMM, YYYY')}
                 </p>
