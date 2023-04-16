@@ -17,7 +17,7 @@ const Categories = () => {
         {categories.map((category: Category) => (
           <div>
             <p className="text-sm p-2">
-              <Link href={`/${category.slug}`}>{category.name}</Link>
+              <Link href={`/category/${category.slug}`}>{category.name}</Link>
             </p>
           </div>
         ))}
