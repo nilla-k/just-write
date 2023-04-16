@@ -37,10 +37,10 @@ const PostCard = ({ post }: { post: Post }) => {
         />
       </div>
       <div id="text-container" className="p-3 lg:p-0">
-        <h1 className="transition duration-300 hover:text-gray-900 text-xl text-gray-700 font-semibold font-serif">
+        <h1 className="transition duration-300 hover:text-gray-900 text-xl text-gray-700 font-semibold">
           <Link href={`/post/${post.slug}`}>{post.title}</Link>
         </h1>
-        <p className="text-sm font-serif text-gray-400 pb-5">
+        <p className="text-sm text-gray-400 pb-5">
           {moment(post.createdAt).format('DD MMM, YYYY')}
         </p>
         <p className="font-serif text-gray-600 italic">{post.excerpt}</p>
