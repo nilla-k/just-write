@@ -38,7 +38,7 @@ const PostWidget = ({ categories, slug }: { categories: Category; slug: string }
               </p>
               <div className="flex gap-1 flex-wrap">
                 {post.categories.map((category: Category) => (
-                  <CategoryBadge category={category.name} />
+                  <CategoryBadge category={category.name} slug={category.slug} />
                 ))}
               </div>
             </div>
