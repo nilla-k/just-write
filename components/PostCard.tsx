@@ -29,7 +29,7 @@ export type Category = {
 
 const PostCard = ({ post }: { post: Post }) => {
   return (
-    <div id="card" className="bg-white shadow-lg rounded-sm p-0 lg:p-8 pb-12 mb-8">
+    <div id="card" className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8 lg:rounded-sm">
       <div id="img-container" className="relative overflow-hidden shadow-md pb-40 lg:pb-80 mb-6">
         <img
           src={post.headerImage.url}

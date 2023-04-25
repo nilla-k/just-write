@@ -21,28 +21,28 @@ const PostWidget = ({ categories, slug }: { categories: Category; slug: string }
       <h3 className="font-semibold  pb-3">{slug ? 'Related posts' : 'Recent posts'}</h3>
       <div>
         {suggestedPosts.map((post: Post) => (
-          <Link href={`/post/${post.slug}`}>
-            <div key={post.title} className="flex items-center w-full mb-5">
-              <div className="w-16 flex-none">
-                <img
-                  alt={post.title}
-                  className="align-middle rounded-sm object-fill w-16 h-16"
-                  src={post.headerImage.url}
-                />
-              </div>
-              <div className="flex-grow ml-4">
-                <p className="text-sm font-semibold">{post.title}</p>
-                <p className="text-gray-500 text-xs pb-2">
-                  {moment(post.createdAt).format('DD MMM, YYYY')}
-                </p>
-                <div className="flex gap-1 flex-wrap">
-                  {post.categories.map((category: Category) => (
-                    <CategoryBadge category={category.name} />
-                  ))}
-                </div>
+          <div key={post.title} className="flex items-center w-full mb-5">
+            <div className="w-16 flex-none">
+              <img
+                alt={post.title}
+                className="align-middle rounded-sm object-fill w-16 h-16"
+                src={post.headerImage.url}
+              />
+            </div>
+            <div className="flex-grow ml-4">
+              <p className="text-sm font-semibold">
+                <Link href={`/post/${post.slug}`}>{post.title}</Link>
+              </p>
+              <p className="text-gray-500 text-xs pb-2">
+                {moment(post.createdAt).format('DD MMM, YYYY')}
+              </p>
+              <div className="flex gap-1 flex-wrap">
+                {post.categories.map((category: Category) => (
+                  <CategoryBadge category={category.name} slug={category.slug} />
+                ))}
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
