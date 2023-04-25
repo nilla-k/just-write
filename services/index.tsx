@@ -118,3 +118,37 @@ export const getCategories = async () => {
     return result.categories;
   }
 };
+
+export const getPostDetails = async ({ slug }: { slug: string }) => {
+  const query = gql`
+    query getPostDetails($slug: String) {
+      post(where: { slug: $slug }) {
+        slug
+        title
+        publishedAt
+        updatedAt
+        headerImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          html
+        }
+        author {
+          name
+        }
+        featuredPost
+      }
+    }
+  `;
+
+  if (graphqlAPI === undefined) {
+    throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
+  } else {
+    const result = await request(graphqlAPI, query);
+    return result.post;
+  }
+};
