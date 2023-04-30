@@ -5,12 +5,15 @@ import { Post, Category } from './PostCard';
 import { getRecentPosts, getSimilarPosts } from '../services';
 import CategoryBadge from './CategoryBadge';
 
-const PostWidget = ({ categories, slug }: { categories: Category; slug: string }) => {
+const PostWidget = ({ categories, slug }: { categories: [Category]; slug: string }) => {
   const [suggestedPosts, setSuggestedPosts] = useState([]);
 
   useEffect(() => {
     if (slug) {
-      // getSimilarPosts().then((result) => setSuggestedPosts(result));
+      const categoriesAsString = categories.map((category: Category) => category.name);
+      getSimilarPosts({ categories: categoriesAsString, slug: slug }).then((result) =>
+        setSuggestedPosts(result)
+      );
     } else {
       getRecentPosts().then((result) => setSuggestedPosts(result));
     }
