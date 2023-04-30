@@ -96,7 +96,7 @@ export const getSimilarPosts = async ({
   if (graphqlAPI === undefined) {
     throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
   } else {
-    const result = await request(graphqlAPI, query);
+    const result = await request(graphqlAPI, query, { categories, slug });
     return result.posts;
   }
 };
@@ -139,6 +139,7 @@ export const getPostDetails = async ({ slug }: { slug: string }) => {
         }
         author {
           name
+          id
         }
         featuredPost
       }
@@ -148,7 +149,7 @@ export const getPostDetails = async ({ slug }: { slug: string }) => {
   if (graphqlAPI === undefined) {
     throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
   } else {
-    const result = await request(graphqlAPI, query);
+    const result = await request(graphqlAPI, query, { slug });
     return result.post;
   }
 };

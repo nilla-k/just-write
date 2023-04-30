@@ -13,6 +13,18 @@ export type Post = {
   categories: [Category];
 };
 
+export type PostDetails = {
+  slug: string;
+  title: string;
+  publishedAt: string;
+  updatedAt: string;
+  headerImage: HeaderImage;
+  categories: [Category];
+  content: string;
+  author: Author;
+  featuredPost: boolean;
+}
+
 export type Author = {
   name: string;
   id: string;
