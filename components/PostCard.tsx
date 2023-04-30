@@ -23,7 +23,7 @@ export type PostDetails = {
   content: string;
   author: Author;
   featuredPost: boolean;
-}
+};
 
 export type Author = {
   name: string;
