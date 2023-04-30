@@ -16,7 +16,7 @@ export type Post = {
 export type PostDetails = {
   slug: string;
   title: string;
-  publishedAt: string;
+  createdAt: string;
   updatedAt: string;
   headerImage: HeaderImage;
   categories: [Category];

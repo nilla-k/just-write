@@ -73,11 +73,11 @@ export const getSimilarPosts = async ({
   categories,
   slug,
 }: {
-  categories: [string];
+  categories: string[];
   slug: string;
 }) => {
   const query = gql`
-    query MyQuery($categories: [String!], $slug: String!) {
+    query getSimilarPosts($categories: [String!], $slug: String!) {
       posts(where: { categories_some: { name_in: $categories }, slug_not: $slug }, last: 3) {
         slug
         title
@@ -125,7 +125,7 @@ export const getPostDetails = async ({ slug }: { slug: string }) => {
       post(where: { slug: $slug }) {
         slug
         title
-        publishedAt
+        createdAt
         updatedAt
         headerImage {
           url
