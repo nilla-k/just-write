@@ -5,4 +5,4 @@ export { default as PostWidget } from './PostWidget';
 export { default as Header } from './Header';
 export { default as Layout } from './Layout';
 export { default as CategoryBadge } from './CategoryBadge';
-export { default as PostDetails } from './PostDetails';
+export { default as PostDetails } from './PostDetailsContent';

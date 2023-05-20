@@ -136,6 +136,8 @@ export const getPostDetails = async ({ slug }: { slug: string }) => {
         }
         content {
           html
+          raw
+          text
         }
         author {
           name

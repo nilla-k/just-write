@@ -10,18 +10,23 @@ Then it just *knows* how to connect it all. Fascinating black magic.
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import React from 'react';
 import { getPosts, getPostDetails } from '../../services';
-import { Post, PostDetails } from '../../components/PostCard';
+import { PostDetails } from '../../components/PostCard';
 import { ParsedUrlQuery } from 'querystring';
+import { Categories, PostWidget } from '../../components';
+import PostDetailsContent from '../../components/PostDetailsContent';
 
 const PostDetail = ({ post }: { post: PostDetails }) => {
   return (
     <div className="container mx-auto px-10 mb-8">
-      <div className="grid grid-cols-1 lg:gird-cols-12 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
-          <p>{`${post.title}`}</p>
+          <div className="bg-white shadow-md rounded-sm lg:p-8 pb-12 mb-8">
+            <PostDetailsContent post={post} />
+          </div>
         </div>
         <div className="col-span-1 lg:col-span-4">
-          {/* related posts widget and categories go here */}
+          <PostWidget categories={post.categories} slug={post.slug} />
+          <Categories />
         </div>
       </div>
     </div>
