@@ -35,10 +35,8 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
             <h1 className="font-semibold  text-2xl">{`${post.title}`}</h1>
           </div>
           <div className="xl:col-span-1 xl:text-right">
-            <p className="text-gray-700 font-serif">
-              {moment(post.createdAt).format('DD MMM, YYYY')}
-            </p>
-            <p className="text-gray-500 font-serif text-sm italic">
+            <p className="text-gray-700 ">{moment(post.createdAt).format('DD MMM, YYYY')}</p>
+            <p className="text-gray-500 text-sm italic">
               {post.createdAt?.includes(post.updatedAt)
                 ? ''
                 : `Updated ${moment(post.updatedAt).format('DD MMM, YYYY')}`}
@@ -51,7 +49,19 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
           ))}
         </div>
         <div className="pt-5">
-          <RichText content={post.content.raw} />
+          <RichText
+            content={post.content.raw}
+            renderers={{
+              p: ({ children }) => <p className="pt-3 pb-1">{children}</p>,
+              blockquote: ({ children }) => (
+                <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
+                  {children}
+                </blockquote>
+              ),
+              ul: ({ children }) => <ul className="list-disc pl-8 my-4">{children}</ul>,
+              ol: ({ children }) => <ol className='list-decimal pl-8 my-4'>{children}</ol>,
+            }}
+          />
         </div>
       </div>
     </div>
