@@ -64,7 +64,6 @@ export const getRecentPosts = async () => {
     throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
   } else {
     const result = await request(graphqlAPI, query);
-    console.log(result.posts);
     return result.posts;
   }
 };
