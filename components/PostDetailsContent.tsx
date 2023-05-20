@@ -48,18 +48,16 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
             <CategoryBadge category={category.name} />
           ))}
         </div>
-        <div className="pt-5">
+        <div className="prose pt-5 max-w-none pr-10">
           <RichText
             content={post.content.raw}
             renderers={{
-              p: ({ children }) => <p className="pt-3 pb-1">{children}</p>,
               blockquote: ({ children }) => (
                 <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
                   {children}
                 </blockquote>
               ),
-              ul: ({ children }) => <ul className="list-disc pl-8 my-4">{children}</ul>,
-              ol: ({ children }) => <ol className='list-decimal pl-8 my-4'>{children}</ol>,
+              code: ({ children }) => <code className="not-prose">{children}</code>,
             }}
           />
         </div>
