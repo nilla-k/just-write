@@ -48,7 +48,7 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
             <CategoryBadge category={category.name} />
           ))}
         </div>
-        <div className="prose pt-5 max-w-none pr-10">
+        <div className="prose pt-5 max-w-none xl:pr-10">
           <RichText
             content={post.content.raw}
             renderers={{
@@ -58,6 +58,7 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
                 </blockquote>
               ),
               code: ({ children }) => <code className="not-prose">{children}</code>,
+              a: ({ children }) => <a className="not-prose text-blue">{children}</a>,
             }}
           />
         </div>
