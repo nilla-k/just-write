@@ -3,7 +3,7 @@ import { Category, PostDetails } from './PostCard';
 import { CategoryBadge } from '.';
 import moment from 'moment';
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { RichTextContent } from '@graphcms/rich-text-types';
+import Link from 'next/link';
 
 const PostDetailsContent = ({ post }: { post: PostDetails }) => {
   return (
@@ -31,7 +31,7 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
         </div>
         <div className="flex gap-1 flex-wrap pt-3">
           {post.categories.map((category: Category) => (
-            <CategoryBadge category={category.name} slug={category.slug}/>
+            <CategoryBadge category={category.name} slug={category.slug} />
           ))}
         </div>
         <div className="prose pt-5 max-w-none xl:pr-10">
@@ -44,7 +44,29 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
                 </blockquote>
               ),
               code: ({ children }) => <code className="not-prose">{children}</code>,
-              a: ({ children }) => <a className="not-prose text-blue">{children}</a>,
+              a: ({ children, openInNewTab, href, rel, ...rest }) => {
+                if (href?.match(/^https?:\/\/|^\/\//i)) {
+                  return (
+                    <a
+                      href={href}
+                      target={openInNewTab ? '_blank' : '_self'}
+                      rel={rel || 'noopener noreferrer'}
+                      className="transition duration-300  text-[#3667b5] hover:text-[#314c78]"
+                      {...rest}
+                    >
+                      {children}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link href={href ?? ''}>
+                    <a {...rest}>
+                      {children}
+                    </a>
+                  </Link>
+                );
+              },
             }}
           />
         </div>
