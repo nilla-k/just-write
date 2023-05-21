@@ -1,7 +1,5 @@
-import React from 'react';
-import moment from 'moment'; // Used for formatting date strings
+import React from 'react'; // Used for formatting date strings
 import Link from 'next/link';
-import Categories from './Categories';
 
 const CategoryBadge = ({ category, slug }: { category: string; slug: string }) => {
   return (
