@@ -31,7 +31,7 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
         </div>
         <div className="flex gap-1 flex-wrap pt-3">
           {post.categories.map((category: Category) => (
-            <CategoryBadge category={category.name} />
+            <CategoryBadge category={category.name} slug={category.slug}/>
           ))}
         </div>
         <div className="prose pt-5 max-w-none xl:pr-10">
