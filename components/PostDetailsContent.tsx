@@ -5,20 +5,6 @@ import moment from 'moment';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { RichTextContent } from '@graphcms/rich-text-types';
 
-const content: RichTextContent = {
-  children: [
-    {
-      type: 'paragraph',
-      children: [
-        {
-          bold: true,
-          text: 'Hello World!',
-        },
-      ],
-    },
-  ],
-};
-
 const PostDetailsContent = ({ post }: { post: PostDetails }) => {
   return (
     <div>
