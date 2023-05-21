@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment'; // Used for formatting date strings
 import Link from 'next/link';
 import Categories from './Categories';
+import { RichTextContent } from '@graphcms/rich-text-types';
 
 export type Post = {
   author: Author;
@@ -11,6 +12,24 @@ export type Post = {
   excerpt: string;
   headerImage: HeaderImage;
   categories: [Category];
+};
+
+export type PostDetails = {
+  slug: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  headerImage: HeaderImage;
+  categories: [Category];
+  content: Content;
+  author: Author;
+  featuredPost: boolean;
+};
+
+export type Content = {
+  raw: RichTextContent;
+  html: string;
+  text: string;
 };
 
 export type Author = {

@@ -15,14 +15,14 @@ const Home: NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 col-span-1">
           {posts.map((post: any) => (
-            <PostCard post={post.node} key={post.title} />
+            <PostCard post={post.node} key={post.slug} />
           ))}
         </div>
 
         <div className="lg:col-span-4 col-span-1">
           <div className="lg:sticky relative top-8">
             {/* these are self composing components */}
-            <PostWidget />
+            <PostWidget categories={[{ name: '', slug: '' }]} slug="" />
             <Categories />
           </div>
         </div>
@@ -33,7 +33,8 @@ const Home: NextPage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps
 
 export default Home;
 
-// Async function to fetch data inside our components. This is a next.js thing, not just a 'we're making our own thing' thing
+// Async function to fetch data inside our components. This is a next.js thing,
+// not just a 'we're making our own thing' thing
 export const getStaticProps: GetStaticProps = async () => {
   const posts: Post[] = (await getPosts()) || []; // return empty aray if get posts doesn't return anything?
 
