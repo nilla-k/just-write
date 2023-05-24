@@ -1,9 +1,7 @@
 import React from 'react';
 import { Category, PostDetails } from './PostCard';
-import { CategoryBadge } from '.';
+import { CategoryBadge, RenderedRichText } from '.';
 import moment from 'moment';
-import { RichText } from '@graphcms/rich-text-react-renderer';
-import Link from 'next/link';
 
 const PostDetailsContent = ({ post }: { post: PostDetails }) => {
   return (
@@ -35,40 +33,7 @@ const PostDetailsContent = ({ post }: { post: PostDetails }) => {
           ))}
         </div>
         <div className="prose pt-5 max-w-none xl:pr-10">
-          <RichText
-            content={post.content.raw}
-            renderers={{
-              blockquote: ({ children }) => (
-                <blockquote className="p-4 my-4 border-l-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
-                  {children}
-                </blockquote>
-              ),
-              code: ({ children }) => <code className="not-prose">{children}</code>,
-              a: ({ children, openInNewTab, href, rel, ...rest }) => {
-                if (href?.match(/^https?:\/\/|^\/\//i)) {
-                  return (
-                    <a
-                      href={href}
-                      target={openInNewTab ? '_blank' : '_self'}
-                      rel={rel || 'noopener noreferrer'}
-                      className="transition duration-300  text-[#3667b5] hover:text-[#314c78]"
-                      {...rest}
-                    >
-                      {children}
-                    </a>
-                  );
-                }
-
-                return (
-                  <Link href={href ?? ''}>
-                    <a {...rest}>
-                      {children}
-                    </a>
-                  </Link>
-                );
-              },
-            }}
-          />
+          <RenderedRichText content={post.content.raw} />
         </div>
       </div>
     </div>
