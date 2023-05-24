@@ -20,13 +20,16 @@ const Header = () => {
 
         {/* md:contents is used to create a container whose children act like direct children of the parent*/}
         <div className="hidden md:float-left md:contents">
-          {categories.map((category) => (
-            <Link key={category.slug} href={`/category/${category.slug}`}>
-              <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer transition duration-300 hover:text-gray-200">
-                {category.name}
-              </span>
-            </Link>
-          ))}
+          <Link href={`/new-post`}>
+            <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer transition duration-300 hover:text-gray-200">
+              New Post
+            </span>
+          </Link>
+          <Link href={`/about`}>
+            <span className="md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer transition duration-300 hover:text-gray-200">
+              About
+            </span>
+          </Link>
         </div>
       </div>
     </div>
