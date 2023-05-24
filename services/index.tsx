@@ -187,3 +187,23 @@ export const getPostDetails = async ({ slug }: { slug: string }) => {
     return result.post;
   }
 };
+
+export const getAboutPageContent = async () => {
+  const query = gql`
+    query getAboutPageContent {
+      brandContent(where: { contentType: "about-page" }) {
+        content {
+          raw
+        }
+      }
+    }
+  `;
+
+  if (graphqlAPI === undefined) {
+    throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
+  } else {
+    const result = await request(graphqlAPI, query);
+    console.log('hi');
+    return result.brandContent.content.raw;
+  }
+};
