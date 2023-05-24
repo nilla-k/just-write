@@ -8,7 +8,7 @@ const CategoryBadge = ({ category, slug }: { category: string; slug: string }) =
       className="bg-slate-200 text-gray-700 italic text-xs rounded-full p-1 pl-2 pr-2 text-center shrink transition duration-300 hover:bg-slate-300"
     >
       <span className="transition duration-300  hover:text-black">
-        <Link href={`category/${slug}`}>{category}</Link>
+        <Link href={`/category/${slug}`}>{category}</Link>
       </span>
     </div>
   );
