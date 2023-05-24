@@ -118,6 +118,39 @@ export const getCategories = async () => {
   }
 };
 
+export const getPostsByCategory = async ({ slug }: { slug: string }) => {
+  const query = gql`
+    query getPostsByCategories($slug: String!) {
+      posts(where: { categories_some: { slug: $slug } }) {
+        slug
+        title
+        categories {
+          slug
+          name
+        }
+        createdAt
+        headerImage {
+          url
+        }
+        excerpt
+        author {
+          name
+          id
+        }
+      }
+      category(where: { slug: $slug }) {
+        name
+      }
+    }
+  `;
+  if (graphqlAPI === undefined) {
+    throw new TypeError('Missing env variable for NEXT_PUBLIC_GRAPHCMS_ENDPOINT');
+  } else {
+    const result = await request(graphqlAPI, query, { slug });
+    return result;
+  }
+};
+
 export const getPostDetails = async ({ slug }: { slug: string }) => {
   const query = gql`
     query getPostDetails($slug: String) {
